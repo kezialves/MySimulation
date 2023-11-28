@@ -48,13 +48,13 @@ bool System::update(double value) {
 
 // ---------- OVERLOAD ----------
 
-System* System::operator= (const System* system) {
+System& System::operator= (const System& system) {
 
-    if(this == system) {
-        return this;
+    if(this == &system) {
+        return *this;
     }
 
-    value = system->getValue();
+    value = system.getValue();
 
-    return this;
+    return *this;
 }

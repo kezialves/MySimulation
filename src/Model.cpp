@@ -11,27 +11,30 @@ Model::~Model() {}
 
 Model::Model(const Model& model) {
 
-    if(this == &model)
-        return;
+    // if(this == &model)
+    //     return;
 
-    for(System* element: getSystems()) {
-        add(element);
+    systems.clear();
+    flows.clear();
+
+    for(SystemIterator systemIterator = systemsBegin(); systemIterator < systemsEnd(); systemIterator++) {
+        add(*systemIterator);
     }
 
-    for(Flow* element: getFlows()) {
-        add(element);
+    for(FlowIterator flowIterator = flowsBegin(); flowIterator < flowsEnd(); flowIterator++) {
+        add(*flowIterator);
     }
 }
 
 // ---------- GETTERS ----------
 
-vector<System*> Model::getSystems() const {
-    return systems;
-}
+// vector<System*> Model::getSystems() const {
+//     return systems;
+// }
 
-vector<Flow*> Model::getFlows() const {
-    return flows;
-}
+// vector<Flow*> Model::getFlows() const {
+//     return flows;
+// }
 
 // ---------- ITERATORS ----------
 
@@ -111,6 +114,21 @@ bool Model::remove(Flow* flow) {
     }
 
     return false;
+}
+
+// ---------- OVERLOAD ----------
+
+Model& Model::operator= (const Model& model) {
+
+    for(SystemIterator systemIterator = systemsBegin(); systemIterator < systemsEnd(); systemIterator++) {
+        add(*systemIterator);
+    }
+
+    for(FlowIterator flowIterator = flowsBegin(); flowIterator < flowsEnd(); flowIterator++) {
+        add(*flowIterator);
+    }
+
+    return *this;
 }
 
 // ---------- MAIN METHODS ----------

@@ -61,14 +61,14 @@ bool Flow::update(System* sourceSystem, System* targetSystem) {
 
 // ---------- OVERLOAD ----------
 
-Flow* Flow::operator= (const Flow* flow) {
+Flow& Flow::operator= (const Flow& flow) {
 
-    if(this == flow) {
-        return this;
+    if(this == &flow) {
+        return *this;
     }
 
-    source = flow->getSource();
-    target = flow->getTarget();
+    source = flow.getSource();
+    target = flow.getTarget();
 
-    return this;
+    return *this;
 }

@@ -27,7 +27,7 @@ class System {
         bool update(double value);
 
         // = operator overload
-        System* operator= (const System*);
+        System& operator= (const System&);
 };
 
 #endif

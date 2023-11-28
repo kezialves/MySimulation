@@ -35,7 +35,7 @@ class Flow {
         virtual double execute() = 0;
 
         // = operator overload
-        Flow* operator= (const Flow*);
+        Flow& operator= (const Flow&);
 };
 
 #endif

@@ -11,8 +11,16 @@
 using namespace std;
 
 class Model {
+    // turn it private?
     vector<System*> systems;
     vector<Flow*> flows;
+
+    private:
+        // Copy constructor
+        Model(const Model&);
+
+        // = operator overload
+        Model& operator= (const Model&);
 
     public:
 
@@ -22,13 +30,11 @@ class Model {
         Model(vector<System*>, vector<Flow*>);
         // Destructor
         virtual ~Model();
-        // Copy constructor
-        Model(const Model&);
 
         // Systems getter
-        vector<System*> getSystems() const;
-        // Flows getter
-        vector<Flow*> getFlows() const;
+        // vector<System*> getSystems() const;
+        // // Flows getter
+        // vector<Flow*> getFlows() const;
 
         // System iterator
         typedef vector<System*>::iterator SystemIterator;
